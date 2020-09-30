@@ -6,7 +6,7 @@ var logger = require('morgan');
 require('dotenv').config();
 var cors = require('cors');
 var mongoose = require('mongoose');
-
+// mongoose connector
 mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true})
         .then(() => console.log('MONGODB CONNECTED'))
         .catch(err => console.log(err));
