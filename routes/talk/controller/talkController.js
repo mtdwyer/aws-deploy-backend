@@ -7,6 +7,8 @@ module.exports = {
 
     try {
       let allTalks = await Talk.find({})
+      console.log('!@-------find-------@!')
+      console.log(allTalks)
       
       res.status(200).json(allTalks);                 
 

@@ -7,7 +7,10 @@ require('dotenv').config();
 var cors = require('cors');
 var mongoose = require('mongoose');
 // mongoose connector
-mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true})
+mongoose.set('useNewUrlParser', true);
+mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true})
         .then(() => console.log('MONGODB CONNECTED'))
         .catch(err => console.log(err));
 
@@ -20,7 +23,7 @@ var app = express();
 // view engine setup
 
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set('view engine', 'pug');
 
 app.use(cors())
 app.use(logger('dev'));
